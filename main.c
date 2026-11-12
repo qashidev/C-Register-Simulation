@@ -6,7 +6,7 @@ void load8(unsigned int *reg, unsigned int value);
 void add8(unsigned int *dest, unsigned int value);
 void sub8(unsigned int *dest, unsigned int value);
 void swap8(unsigned int *a, unsigned int *b);
-void display_register(const unsigned int *reg);
+void dreg(const unsigned int *reg);
 void inputreg(unsigned int *a);
 
 int main(void){
@@ -44,7 +44,7 @@ int main(void){
           swap8(&r2,&r1); break;
 
        case 7: // display regs
-         display_register(&r1); display_register(&r2);
+         dreg(&r1); dreg(&r2);
          break;
 
        case 8: // reset
@@ -89,7 +89,7 @@ void swap8(unsigned int *a, unsigned int *b){
   *a = *b; *b = x;
 }
 
-void display_register(const unsigned int *reg){
+void dreg(const unsigned int *reg){
   printf("%u : ",*reg); unsigned int x = *reg;
   for (int y = 128, bit; y >= 1; y /= 2){
     bit = (x / y) % 2;
